@@ -1,0 +1,88 @@
+site_name: Administração
+
+site_url: https://team-titans-unb.github.io/administracao/
+repo_url: https://github.com/team-titans-unb/administracao
+repo_name: repo-administracao
+site_description: "Documentação da administração da Equipe Titans"
+
+nav:
+  - Home: index.md
+  - Membros: pages/membros/index.md
+  - Inventário: pages/inventario/index.md
+  - Viagens: pages/viagens/index.md
+
+# Quadro Kanban na Home (marcador <!-- kanban --> em docs/index.md)
+extra:
+  kanban:
+    org: team-titans-unb
+    project: 17
+
+hooks:
+  - hooks/kanban.py
+
+theme:
+  name: material
+  language: pt-BR
+
+  features:
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.indexes
+    - header.autohide
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+
+  palette:
+
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/lightbulb-outline
+        name: Mude para o tema escuro
+
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/lightbulb
+        name: Mude para o tema claro
+
+
+  logo: assets/titans.png
+  favicon: assets/titansIco.ico
+  highlightjs: true
+
+extra_css:
+  - overrides/styles.css
+  - overrides/tabelas.css
+  - overrides/kanban.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
+
+# Fórmulas: $...$ no texto e $$...$$ em bloco (KaTeX)
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
+
+markdown_extensions:
+    - admonition
+    - attr_list
+    - md_in_html
+    - tables
+    - toc:
+        permalink: true
+    - pymdownx.details
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.arithmatex:
+        generic: true
+    # Blocos ```mermaid viram diagramas
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
